@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<BorderPane fx:id="rootContainer"
+            style="-fx-background-color: #0f0f0f;"
+            xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.postgresql.Form1"
+stylesheets="@style.css">
+
+
+    <top>
+        <BorderPane style="-fx-background-color: #121212; -fx-padding: 10; -fx-border-color: #333333; -fx-border-width: 0 0 1 0;">
+            <left>
+                <HBox alignment="CENTER_RIGHT" spacing="12" style="-fx-padding: 0 12;">
+                    <ImageView fx:id="FavoriteImage" fitWidth="25" fitHeight="25" onMouseClicked="#openIzbran" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" />
+                    <ImageView fx:id="LibraryImage" fitWidth="25" fitHeight="25" onMouseClicked="#openPlaylists" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" />
+                    <Label fx:id="adminPanelBtn" onMouseClicked="#openAdminPanel" style="-fx-font-size: 30px; -fx-text-fill: #b388ff; -fx-cursor: hand;" text="🛠" visible="false" />
+                </HBox>
+            </left>
+
+            <center>
+                <HBox alignment="CENTER">
+                    <HBox alignment="CENTER" spacing="8" style="-fx-background-color: #2d2d2d; -fx-background-radius: 24; -fx-padding: 4 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 4, 0, 0, 2);">
+                        <Label style="-fx-font-size: 18px; -fx-text-fill: #888888;" text="🔍" />
+                        <TextField fx:id="searchField" promptText="Поиск" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 16px; -fx-text-fill: #ffffff; -fx-prompt-text-fill: #777777;" HBox.hgrow="ALWAYS">
+                            <padding>
+                                <Insets right="5.0" />
+                            </padding>
+                        </TextField>
+                    </HBox>
+                </HBox>
+            </center>
+
+            <right>
+                <HBox alignment="CENTER_LEFT" spacing="12" style="-fx-padding: 0 12;">
+                    <ImageView fx:id="AccImage" fitWidth="30" fitHeight="30" onMouseClicked="#openAccount" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" />
+                    <ImageView fx:id="LogoutImage" fitWidth="25" fitHeight="25" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" />
+                </HBox>
+            </right>
+        </BorderPane>
+    </top>
+
+
+    <center>
+        <ScrollPane fx:id="mainScrollPane" fitToWidth="true" style="-fx-background: #0f0f0f; -fx-background-color: #0f0f0f;" stylesheets="@scrollbar.css">
+            <content>
+                <VBox fx:id="mainContent" maxWidth="Infinity" spacing="24" style="-fx-padding: 20; -fx-background-color: #0f0f0f;">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label style="-fx-font-size: 24px; -fx-font-weight: 600; -fx-text-fill: #ffffff;" text="Треки" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button text="Показать больше → " onAction="#openFullCatalog" style="-fx-font-size: 14px; -fx-text-fill: #b3b3b3; -fx-background-color: transparent;  -fx-cursor: hand;" />
+                    </HBox>
+
+                    <FlowPane fx:id="musicCardsPane" hgap="20" style="-fx-padding: 0 0 20 0;" vgap="20" />
+
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label style="-fx-font-size: 24px; -fx-font-weight: 600; -fx-text-fill: #ffffff;" text="Исполнители" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button text="Показать больше → " onAction="#openFullAuthorsCatalog" style="-fx-font-size: 14px;-fx-text-fill: #b3b3b3; -fx-background-color: transparent;-fx-cursor: hand;" />
+                    </HBox>
+
+                    <FlowPane fx:id="authorsPane" hgap="20" style="-fx-padding: 0 0 20 0;" vgap="20" />
+
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label style="-fx-font-size: 24px; -fx-font-weight: 600; -fx-text-fill: #ffffff;" text="Радио" />
+                    </HBox>
+
+                    <FlowPane fx:id="radioCardsPane" hgap="20" style="-fx-padding: 0 0 20 0;" vgap="20" />
+
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label style="-fx-font-size: 24px; -fx-font-weight: 600; -fx-text-fill: #ffffff;" text="Плейлисты" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button text="Показать больше → " onAction="#openFeaturedPlaylists" style="-fx-font-size: 14px; -fx-text-fill: #b3b3b3; -fx-background-color: transparent; -fx-cursor: hand;" />
+                    </HBox>
+
+                    <FlowPane fx:id="featuredPlaylistsPane" hgap="20" vgap="20" style="-fx-padding: 0 0 20 0;" />
+
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label style="-fx-font-size: 24px; -fx-font-weight: 600; -fx-text-fill: #ffffff;" text="История" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button text="Показать больше → " onAction="#openHistory" style="-fx-font-size: 14px; -fx-text-fill: #b3b3b3; -fx-background-color: transparent; -fx-cursor: hand;" />
+                    </HBox>
+
+                    <FlowPane fx:id="historyPane" hgap="20" vgap="20" style="-fx-padding: 0 0 20 0;" />
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+
+
+
+    <bottom>
+        <HBox fx:id="miniPlayerBar" alignment="CENTER_LEFT" spacing="15"
+              style="-fx-background-color: #181818; -fx-padding: 10 20; -fx-border-color: #282828; -fx-border-width: 1 0 0 0;"
+              visible="false" managed="false">
+
+            <HBox alignment="CENTER_LEFT" spacing="12" prefWidth="300" style="-fx-cursor: hand;" onMouseClicked="#openCurrentTrackDetail">
+                <ImageView fx:id="miniCoverImage" fitWidth="50" fitHeight="50" preserveRatio="true" style="-fx-background-radius: 6;" />
+                <VBox alignment="CENTER_LEFT" spacing="3">
+                    <Label fx:id="miniTitleLabel" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #ffffff;" text="Название трека" />
+                    <Label fx:id="miniArtistLabel" style="-fx-font-size: 12px; -fx-text-fill: #b3b3b3;" text="Исполнитель" />
+                </VBox>
+            </HBox>
+
+            <Region HBox.hgrow="ALWAYS" />
+
+            <HBox alignment="CENTER" spacing="15" HBox.hgrow="ALWAYS" maxWidth="650">
+
+                <Button fx:id="miniFavoriteButton" onAction="#handleMiniFavorite" style="-fx-background-color: transparent; -fx-cursor: hand;" />
+
+                <Label fx:id="currentTimeLabel" style="-fx-font-size: 13px; -fx-text-fill: white;" text="0:00" />
+                <Slider fx:id="miniProgressBar" styleClass="progress-slider" minWidth="250" min="0" max="1" value="0" />
+                <Label fx:id="durationLabel" style="-fx-font-size: 13px; -fx-text-fill: white;" text="0:00" />
+
+                <HBox alignment="CENTER" spacing="12">
+                    <Button fx:id="miniPrevButton" onAction="#handleMiniPrev" style="-fx-background-color: #181818; -fx-cursor: hand;" />
+                    <Button fx:id="miniPlayButton" onAction="#handleMiniPlayPause" style="-fx-background-color: #181818; -fx-cursor: hand;" />
+                    <Button fx:id="miniNextButton" onAction="#handleMiniNext" style="-fx-background-color: #181818; -fx-cursor: hand;" />
+                </HBox>
+
+
+                <Button fx:id="miniLoopButton" onAction="#handleMiniLoop" style="-fx-background-color: transparent; -fx-cursor: hand;" />
+            </HBox>
+
+            <Region HBox.hgrow="ALWAYS" />
+
+            <HBox alignment="CENTER_RIGHT" prefWidth="200">
+                <Button onAction="#openCurrentTrackDetail" style="-fx-background-color: #282828; -fx-text-fill: #ffffff; -fx-background-radius: 8; -fx-cursor: hand; -fx-padding: 8 14;" text="🡹" />
+            </HBox>
+        </HBox>
+    </bottom>
+</BorderPane>

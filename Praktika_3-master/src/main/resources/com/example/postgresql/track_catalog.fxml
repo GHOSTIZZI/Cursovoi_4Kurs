@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.postgresql.TrackCatalogController"
+      spacing="20"
+      style="-fx-padding: 20; -fx-background-color: #0f0f0f;">
+
+    <HBox spacing="12" alignment="CENTER_LEFT">
+        <Button text="←" onAction="#goBack"
+                style="
+                    -fx-font-size: 25px;
+                    -fx-padding: 9 16 9 16;
+                    -fx-text-fill: #ffffff;
+                    -fx-border-color: #ccc;
+                    -fx-border-width: 1px;
+                    -fx-background-radius: 50%;
+                    -fx-border-radius: 50%;
+                    -fx-cursor: hand;
+                    -fx-background-color: #0f0f0f;
+                "/>
+        <Label text="Каталог"
+               style="-fx-font-size: 24px; -fx-text-fill: #ffffff; -fx-font-weight: bold;"
+               HBox.hgrow="ALWAYS"/>
+    </HBox>
+
+    <HBox spacing="12" alignment="CENTER_LEFT">
+        <ComboBox fx:id="authorComboBox" promptText="Исполнитель" prefWidth="180"
+                  style="-fx-background-color: #1a1a1a; -fx-text-fill: white; -fx-background-radius: 6;"/>
+        <ComboBox fx:id="genreComboBox" promptText="Жанр" prefWidth="150"
+                  style="-fx-background-color: #1a1a1a; -fx-text-fill: white; -fx-background-radius: 6;"/>
+        <ComboBox fx:id="yearComboBox" promptText="Год выпуска" prefWidth="130"
+                  style="-fx-background-color: #1a1a1a; -fx-text-fill: white; -fx-background-radius: 6;"/>
+        <ComboBox fx:id="sortComboBox" promptText="Сортировка" prefWidth="170"
+                  style="-fx-background-color: #1a1a1a; -fx-text-fill: white; -fx-background-radius: 6;"/>
+        <Button text="Сбросить" onAction="#resetFilters"
+                style="-fx-background-color: #2d2d2d; -fx-text-fill: white; -fx-background-radius: 6; -fx-cursor: hand;"/>
+    </HBox>
+
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" style="-fx-background: #0f0f0f; -fx-background-color: #0f0f0f;">
+        <FlowPane fx:id="fullTrackFlowPane"
+                  hgap="20" vgap="20"
+                  alignment="TOP_LEFT"
+                  style="-fx-padding: 5;">
+        </FlowPane>
+    </ScrollPane>
+
+</VBox>

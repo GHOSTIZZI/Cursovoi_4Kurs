@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.postgresql.AccController"
+      spacing="20"
+      alignment="TOP_CENTER"
+      style="-fx-padding: 20; -fx-background-color: #0f0f0f;">
+
+    <HBox spacing="12" alignment="CENTER_LEFT" style="-fx-pref-width: 100%;">
+        <Button text="←"
+                onAction="#goBack"
+                style="
+                    -fx-font-size: 25px;
+                    -fx-padding: 9 16 9 16;
+                    -fx-text-fill: #ffffff;
+                    -fx-border-color: #333333;
+                    -fx-border-width: 1px;
+                    -fx-background-radius: 50%;
+                    -fx-border-radius: 50%;
+                    -fx-cursor: hand;
+                    -fx-background-color: #0f0f0f;"/>
+        <Label text="Аккаунт и Статистика"
+               style="-fx-font-size: 22px; -fx-text-fill: #ffffff; -fx-font-weight: bold;"
+               alignment="CENTER"/>
+    </HBox>
+
+    <HBox spacing="30" alignment="CENTER" style="-fx-padding: 10;">
+
+        <ImageView fx:id="avatarImage"
+                   fitWidth="200"
+                   fitHeight="200"
+                   preserveRatio="true"
+                   style="-fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.05), 10, 0, 0, 0);"/>
+        <Label fx:id="loginLabel" text="[Загрузка логина]" style="-fx-font-size: 24px; -fx-text-fill: #ffffff; -fx-font-weight: bold;" />
+        <Button onAction="#handleLogout" style="-fx-background-color: transparent; -fx-cursor: hand;">
+            <graphic>
+                <ImageView fx:id="logoutIcon" fitWidth="35" fitHeight="35"/>
+            </graphic>
+        </Button>
+
+
+        <VBox spacing="15" style="-fx-background-color: #181818; -fx-padding: 20; -fx-background-radius: 12; -fx-border-color: #282828; -fx-border-radius: 12;" prefWidth="480">
+            <Label text="Статистика прослушиваний" style="-fx-text-fill: #ffffff; -fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+            <HBox spacing="10">
+                <Label text="Всего прослушиваний:" style="-fx-text-fill: #b3b3b3;"/>
+                <Label fx:id="totalPlaysLabel" text="0" style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+            </HBox>
+            <HBox spacing="10">
+                <Label text="Топ исполнитель:" style="-fx-text-fill: #b3b3b3;"/>
+                <Label fx:id="topArtistLabel" text="-" style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+            </HBox>
+            <HBox spacing="10">
+                <Label text="Любимый жанр:" style="-fx-text-fill: #b3b3b3;"/>
+                <Label fx:id="favoriteGenreLabel" text="-" style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+            </HBox>
+
+            <Separator style="-fx-background-color: #282828;" />
+
+
+            <VBox spacing="8">
+                <Label text="Топ-5 любимых треков:" style="-fx-text-fill: #ffffff; -fx-font-weight: bold; -fx-font-size: 14px;"/>
+                <VBox fx:id="topTracksContainer" spacing="4">
+
+                </VBox>
+            </VBox>
+        </VBox>
+    </HBox>
+
+
+
+
+</VBox>
